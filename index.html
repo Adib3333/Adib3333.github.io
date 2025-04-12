@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Noman Chowdhury | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <header class="hero">
+    <div class="particles-container"></div>
     <div class="hero-content">
-      <img src="profile.jpg" alt="Noman Chowdhury" class="profile-img">
+      <img src="images/profile.jpg" alt="Noman Chowdhury" class="profile-img">
       <h1>Hi, I'm <span>Noman Chowdhury</span></h1>
       <p>BSc Computer Science | Software Developer | AI Enthusiast</p>
       <div class="social-links">
-        <a href="mailto:adibhossain2002@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/noman-chowdhury-4945b4288">LinkedIn</a>
+        <a href="mailto:adibhossain2002@gmail.com" class="social-btn">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/noman-chowdhury-4945b4288" class="social-btn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/yourusername" class="social-btn">
+          <i class="fab fa-github"></i>
+        </a>
       </div>
     </div>
   </header>
+
+  <section class="skills-section">
+    <h2>Tech Superpowers</h2>
+    <div class="skills-container">
+      <div class="skill" data-skill="95"><span>Python</span></div>
+      <div class="skill" data-skill="90"><span>Java</span></div>
+      <div class="skill" data-skill="85"><span>AI/ML</span></div>
+      <div class="skill" data-skill="88"><span>Web Dev</span></div>
+    </div>
+  </section>
 
   <section class="about-section">
     <h2>About Me</h2>
@@ -29,24 +48,24 @@
     <h2>My Projects</h2>
     <div class="project-grid">
       <div class="project-card">
-        <img src="airrace.bmp" alt="Air Racing Game">
+        <img src="images/airrace.png" alt="Air Racing Game">
         <h3>Air Racing Game</h3>
-        <p>A fast-paced 3D flight simulation developed in Python. Players race to airports while collecting suitcases and avoiding traps. Whoever collects 10 suitcases first, dawns the crown and becomes the Winner.</p>
+        <p>A fast-paced 3D flight simulation developed in Python. Players race to airports while collecting suitcases and avoiding traps.</p>
       </div>
       <div class="project-card">
-        <img src="obstaclechess.bmp" alt="Obstacle Chess">
+        <img src="images/obstaclechess.png" alt="Obstacle Chess">
         <h3>Obstacle Chess</h3>
-        <p>An exciting twist on traditional chess, introducing random obstacles on the board to challenge strategy and gameplay.</p>
+        <p>An exciting twist on traditional chess with random obstacles on the board to challenge strategy and gameplay.</p>
       </div>
       <div class="project-card">
-        <img src="braille.bmp" alt="Braille Translator">
+        <img src="images/braille.png" alt="Braille Translator">
         <h3>Braille Translator</h3>
-        <p>A Java-based tool that converts Afrikaans text into Braille symbols, built to support accessibility and education for the visually impaired.</p>
+        <p>Java-based tool that converts Afrikaans text into Braille symbols for accessibility and education.</p>
       </div>
       <div class="project-card">
-        <img src="simplcompiler.bmp" alt="Simpl Compiler">
+        <img src="images/simplcompiler.png" alt="Simpl Compiler">
         <h3>Simpl Compiler</h3>
-        <p>A full compiler for a custom educational programming language called "Simpl", including parsing, optimization, and code generation stages.</p>
+        <p>Full compiler for custom educational programming language "Simpl", including parsing and code generation.</p>
       </div>
     </div>
   </section>
@@ -54,5 +73,7 @@
   <footer>
     <p>© 2025 Noman Chowdhury</p>
   </footer>
+
+  <script src="animations.js"></script>
 </body>
 </html>
