@@ -3,77 +3,1103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Noman Chowdhury | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>Noman Chowdhury | Software Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #00ffd5;
+      --secondary-color: #0ea5e9;
+      --accent-color: #8b5cf6;
+      --dark-bg: #0a0a0b;
+      --card-bg: #1a1a1b;
+      --text-primary: #ffffff;
+      --text-secondary: #a1a1aa;
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --glow: 0 0 30px rgba(0, 255, 213, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 10, 11, 0.95);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0a0a0b 0%, #1a1a1b 50%, #0a0a0b 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 800px;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 4px solid var(--primary-color);
+      margin-bottom: 2rem;
+      object-fit: cover;
+      animation: float 6s ease-in-out infinite;
+      box-shadow: var(--glow);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInUp 1s ease 0.3s both;
+    }
+
+    .hero .subtitle {
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      animation: fadeInUp 1s ease 0.6s both;
+    }
+
+    .hero .description {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeInUp 1s ease 0.9s both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+      animation: fadeInUp 1s ease 1.2s both;
+    }
+
+    .social-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-btn:hover {
+      background: var(--primary-color);
+      color: var(--dark-bg);
+      transform: translateY(-5px);
+      box-shadow: var(--glow);
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--dark-bg);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      animation: fadeInUp 1s ease 1.5s both;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 255, 213, 0.4);
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 5rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* About Section */
+    .about-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-text {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .skill-icon {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .skill-name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-level {
+      color: var(--text-secondary);
+    }
+
+    /* Resume Section */
+    .resume-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .resume-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .resume-card h3 {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .resume-item {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .resume-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .resume-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .resume-subtitle {
+      color: var(--primary-color);
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .resume-date {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .resume-description {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    }
+
+    .project-content {
+      padding: 2rem;
+    }
+
+    .project-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .project-description {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-tag {
+      background: rgba(0, 255, 213, 0.2);
+      color: var(--primary-color);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(0, 255, 213, 0.3);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .project-link {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .project-link:hover {
+      color: var(--secondary-color);
+    }
+
+    /* Contact Section */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info h3 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-secondary);
+    }
+
+    .contact-form {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-family: inherit;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--dark-bg);
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 255, 213, 0.4);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--card-bg);
+      padding: 2rem 0;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: rgba(10, 10, 11, 0.95);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        backdrop-filter: blur(20px);
+        padding: 2rem 0;
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+
+    /* Particles */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      background: var(--primary-color);
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float-particles 20s linear infinite;
+    }
+
+    @keyframes float-particles {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.3;
+      }
+      90% {
+        opacity: 0.3;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="particles-container"></div>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">NC</div>
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#resume" class="nav-link">Resume</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="particles"></div>
     <div class="hero-content">
       <img src="images/profile.jpg" alt="Noman Chowdhury" class="profile-img">
-      <h1>Hi, I'm <span>Noman Chowdhury</span></h1>
-      <p>BSc Computer Science | Software Developer | AI Enthusiast</p>
+      <h1>Noman Chowdhury</h1>
+      <p class="subtitle">Software Developer & AI Enthusiast</p>
+      <p class="description">Computer Science student at Stellenbosch University passionate about building innovative solutions through code. Specialized in systems programming, AI, and full-stack development.</p>
+      
       <div class="social-links">
-        <a href="mailto:adibhossain2002@gmail.com" class="social-btn">
+        <a href="mailto:adibhossain2002@gmail.com" class="social-btn" aria-label="Email">
           <i class="fas fa-envelope"></i>
         </a>
-        <a href="https://www.linkedin.com/in/noman-chowdhury-4945b4288" class="social-btn">
+        <a href="https://www.linkedin.com/in/noman-chowdhury-4945b4288" class="social-btn" aria-label="LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
-        <a href="https://github.com/yourusername" class="social-btn">
+        <a href="https://github.com/Adib3333" class="social-btn" aria-label="GitHub">
           <i class="fab fa-github"></i>
         </a>
       </div>
-    </div>
-  </header>
-
-  <section class="skills-section">
-    <h2>Tech Superpowers</h2>
-    <div class="skills-container">
-      <div class="skill" data-skill="95"><span>Python</span></div>
-      <div class="skill" data-skill="90"><span>Java</span></div>
-      <div class="skill" data-skill="85"><span>AI/ML</span></div>
-      <div class="skill" data-skill="88"><span>Web Dev</span></div>
+      
+      <a href="#contact" class="cta-button">Get In Touch</a>
     </div>
   </section>
 
-  <section class="about-section">
-    <h2>About Me</h2>
-    <p>23-year-old Computer Science student from Stellenbosch University with a passion for coding, software development, and artificial intelligence. I love bringing creative ideas to life through code!</p>
+  <!-- About Section -->
+  <section id="about" class="section fade-in">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+      <p class="about-text">
+        I'm a 23-year-old Computer Science student at Stellenbosch University with a deep passion for technology and innovation. 
+        My journey in software development spans from low-level systems programming to high-level application development, 
+        with particular expertise in AI, compiler design, and distributed systems. I love tackling complex problems and 
+        turning creative ideas into reality through elegant, efficient code.
+      </p>
+    </div>
   </section>
 
-  <section class="projects-section">
-    <h2>My Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <img src="images/airrace.png" alt="Air Racing Game">
-        <h3>Air Racing Game</h3>
-        <p>A fast-paced 3D flight simulation developed in Python. Players race to airports while collecting suitcases and avoiding traps.</p>
+  <!-- Skills Section -->
+  <section id="skills" class="section fade-in">
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fab fa-python"></i>
+        </div>
+        <div class="skill-name">Python</div>
+        <div class="skill-level">Advanced - Game Development, AI, Data Structures</div>
       </div>
-      <div class="project-card">
-        <img src="images/obstaclechess.png" alt="Obstacle Chess">
-        <h3>Obstacle Chess</h3>
-        <p>An exciting twist on traditional chess with random obstacles on the board to challenge strategy and gameplay.</p>
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fab fa-java"></i>
+        </div>
+        <div class="skill-name">Java</div>
+        <div class="skill-level">Advanced - Network Programming, Concurrency</div>
       </div>
-      <div class="project-card">
-        <img src="images/braille.png" alt="Braille Translator">
-        <h3>Braille Translator</h3>
-        <p>Java-based tool that converts Afrikaans text into Braille symbols for accessibility and education.</p>
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <div class="skill-name">C Programming</div>
+        <div class="skill-level">Proficient - Systems Programming, Compilers</div>
       </div>
-      <div class="project-card">
-        <img src="images/simplcompiler.png" alt="Simpl Compiler">
-        <h3>Simpl Compiler</h3>
-        <p>Full compiler for custom educational programming language "Simpl", including parsing and code generation.</p>
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fas fa-globe"></i>
+        </div>
+        <div class="skill-name">Web Development</div>
+        <div class="skill-level">Intermediate - HTML, CSS, JavaScript</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+        <div class="skill-name">AI & Machine Learning</div>
+        <div class="skill-level">Intermediate - Algorithm Design, Optimization</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fas fa-database"></i>
+        </div>
+        <div class="skill-name">Data Structures</div>
+        <div class="skill-level">Advanced - Algorithms, Performance Optimization</div>
       </div>
     </div>
   </section>
 
-  <footer>
-    <p>© 2025 Noman Chowdhury</p>
+  <!-- Resume Section -->
+  <section id="resume" class="section fade-in">
+    <h2 class="section-title">Resume</h2>
+    <div class="resume-container">
+      <div class="resume-card">
+        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+        <div class="resume-item">
+          <div class="resume-title">BSc Computer Science</div>
+          <div class="resume-subtitle">Stellenbosch University</div>
+          <div class="resume-date">2022 - Present</div>
+          <div class="resume-description">
+            Majoring in Computer Science & Operations Research. Key coursework includes Data Structures & Algorithms, 
+            Computer Architecture, Concurrency, Network Programming, and AI/ML fundamentals.
+          </div>
+        </div>
+        <div class="resume-item">
+          <div class="resume-title">National Senior Certificate</div>
+          <div class="resume-subtitle">Worcester Gymnasium</div>
+          <div class="resume-date">2020 - 2021</div>
+        </div>
+      </div>
+
+      <div class="resume-card">
+        <h3><i class="fas fa-briefcase"></i> Experience</h3>
+        <div class="resume-item">
+          <div class="resume-title">Teaching Assistant (CS244)</div>
+          <div class="resume-subtitle">Stellenbosch University</div>
+          <div class="resume-date">July 2025 - Present</div>
+          <div class="resume-description">
+            Assist students in Computer Architecture and Systems Programming. Guide peers in Git usage, 
+            lead study groups, provide mentorship, and maintain academic integrity during examinations.
+          </div>
+        </div>
+      </div>
+
+      <div class="resume-card">
+        <h3><i class="fas fa-tools"></i> Technical Skills</h3>
+        <div class="resume-item">
+          <div class="resume-title">Programming Languages</div>
+          <div class="resume-description">
+            <strong>Proficient:</strong> Java, Python<br>
+            <strong>Familiar:</strong> C, R, HTML/CSS/JavaScript
+          </div>
+        </div>
+        <div class="resume-item">
+          <div class="resume-title">Tools & Technologies</div>
+          <div class="resume-description">
+            Git, VS Code, MATLAB, Notion, Multi-threading, Network Programming, 
+            Compiler Design, Systems Programming
+          </div>
+        </div>
+      </div>
+
+      <div class="resume-card">
+        <h3><i class="fas fa-award"></i> Achievements</h3>
+        <div class="resume-item">
+          <div class="resume-title">NITheCS Mini-Schools</div>
+          <div class="resume-subtitle">AI and Parallel Computing</div>
+          <div class="resume-date">2023</div>
+          <div class="resume-description">
+            Attended specialized workshops on Artificial Intelligence and Parallel Computing 
+            at Stellenbosch University.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section fade-in">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="images/airrace.png" alt="Air Racing Game" class="project-image">
+        <div class="project-content">
+          <h3 class="project-title">Air Racing Game</h3>
+          <p class="project-description">
+            A fast-paced 3D flight simulation game built in Python. Features dynamic gameplay 
+            with airport racing, collectible mechanics, and obstacle avoidance systems.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Game Development</span>
+            <span class="tech-tag">3D Graphics</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">View Code <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/obstaclechess.png" alt="Obstacle Chess" class="project-image">
+        <div class="project-content">
+          <h3 class="project-title">Obstacle Chess</h3>
+          <p class="project-description">
+            An innovative chess variant featuring dynamic obstacles like mines and trapdoors. 
+            Includes save/load functionality and advanced game logic implementation.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Game Logic</span>
+            <span class="tech-tag">Strategy</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">View Code <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/braille.png" alt="Braille Translator" class="project-image">
+        <div class="project-content">
+          <h3 class="project-title">Braille Translator</h3>
+          <p class="project-description">
+            Java-based accessibility tool that converts Afrikaans text to Braille symbols. 
+            Features optimized character mapping and educational support functionality.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">Accessibility</span>
+            <span class="tech-tag">Translation</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">View Code <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/simplcompiler.png" alt="Simpl Compiler" class="project-image">
+        <div class="project-content">
+          <h3 class="project-title">Simpl Compiler</h3>
+          <p class="project-description">
+            Complete compiler implementation for the educational "Simpl" programming language. 
+            Includes lexical analysis, parsing, semantic checking, and code generation.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">C</span>
+            <span class="tech-tag">Compiler Design</span>
+            <span class="tech-tag">Language Processing</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">View Code <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-content" style="padding-top: 2rem;">
+          <h3 class="project-title">Parallel Othello AI</h3>
+          <p class="project-description">
+            Advanced AI game player using Minimax algorithm with alpha-beta pruning. 
+            Parallelized using MPI for distributed computation and optimized performance.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">C</span>
+            <span class="tech-tag">MPI</span>
+            <span class="tech-tag">AI</span>
+            <span class="tech-tag">Parallel Computing</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">View Code <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-content" style="padding-top: 2rem;">
+          <h3 class="project-title">VoIP Chat Application</h3>
+          <p class="project-description">
+            Real-time voice and text communication platform built with JavaFX. 
+            Implements TCP/UDP protocols with multithreading for concurrent user support.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">JavaFX</span>
+            <span class="tech-tag">Networking</span>
+            <span class="tech-tag">Multithreading</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">View Code <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section fade-in">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Let's Connect!</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+          I'm always interested in new opportunities and collaborations. 
+          Whether you have a project in mind or just want to chat about technology, feel free to reach out!
+        </p>
+        
+        <div class="contact-item">
+          <i class="fas fa-envelope" style="color: var(--primary-color);"></i>
+          <span>adibhossain2002@gmail.com</span>
+        </div>
+        
+        <div class="contact-item">
+          <i class="fas fa-phone" style="color: var(--primary-color);"></i>
+          <span>(062) 319-7191</span>
+        </div>
+        
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i>
+          <span>Stellenbosch, Western Cape, SA</span>
+        </div>
+        
+        <div class="contact-item">
+          <i class="fab fa-linkedin" style="color: var(--primary-color);"></i>
+          <a href="https://www.linkedin.com/in/noman-chowdhury-4945b4288" style="color: var(--text-secondary); text-decoration: none;">
+            linkedin.com/in/noman-chowdhury-4945b4288
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Noman Chowdhury. All rights reserved.</p>
   </footer>
 
-  <script src="animations.js"></script>
+  <script>
+    // Navigation functionality
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all fade-in elements
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Navbar background on scroll
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(10, 10, 11, 0.98)';
+      } else {
+        navbar.style.background = 'rgba(10, 10, 11, 0.95)';
+      }
+    });
+
+    // Particle animation
+    function createParticles() {
+      const container = document.querySelector('.particles');
+      const particleCount = 50;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+        container.appendChild(particle);
+      }
+    }
+
+    // Contact form handling
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(this);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const subject = formData.get('subject');
+      const message = formData.get('message');
+      
+      // Create mailto link
+      const mailtoLink = `mailto:adibhossain2002@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+      
+      // Open email client
+      window.location.href = mailtoLink;
+      
+      // Reset form
+      this.reset();
+      
+      // Show success message
+      alert('Thank you for your message! Your email client should open with the message ready to send.');
+    });
+
+    // Initialize particles
+    createParticles();
+
+    // Skill card hover effects
+    document.querySelectorAll('.skill-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.background = 'linear-gradient(135deg, rgba(0, 255, 213, 0.1), rgba(14, 165, 233, 0.1))';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.background = 'var(--card-bg)';
+      });
+    });
+  </script>
 </body>
 </html>
